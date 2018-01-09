@@ -9,11 +9,13 @@ public class LibraryTest {
 
     private Library library;
     private Book book;
+    private Borrower borrower;
 
     @Before
     public void before(){
         library = new Library(2);
         book = new Book("Science Fiction");
+        borrower = new Borrower("Eric", 5);
     }
 
     @Test
@@ -45,7 +47,7 @@ public class LibraryTest {
     public void libraryCanIssueBook(){
         library.addBook(book);
         library.addBook(book);
-        library.issueBook(book);
+        library.issueBook(borrower, book);
 
         assertEquals(1, library.countBooks());
     }

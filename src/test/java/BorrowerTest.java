@@ -12,6 +12,11 @@ public class BorrowerTest {
     @Before
     public void before(){
         borrower = new Borrower("Tony", 5);
+        book = new Book("Fantasy");
+        library = new Library(5);
+        for (int i = 0; i < 5; i++){
+            library.addBook(book);
+        }
     }
 
     @Test

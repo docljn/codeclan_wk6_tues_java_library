@@ -10,12 +10,20 @@ public class LibraryTest {
     private Library library;
     private Book book;
     private Borrower borrower;
+    private Library libraryHoldsHundred;
+    private Book fantasy;
+    private Book horror;
+    private Book scifi;
 
     @Before
     public void before(){
         library = new Library(2);
         book = new Book("Science Fiction");
         borrower = new Borrower("Eric", 5);
+        fantasy = new Book("Fantasy");
+        horror = new Book("Horror");
+        scifi = new Book("Science Fiction");
+        libraryHoldsHundred = new Library(100);
     }
 
     @Test
@@ -50,6 +58,23 @@ public class LibraryTest {
         library.issueBook(borrower, book);
 
         assertEquals(1, library.countBooks());
+    }
+
+    @Test
+    public void librarySortsStockByGenre(){
+        for(int i = 0; i < 5; i++){
+            libraryHoldsHundred.addBook(scifi);
+        }
+        for(int i = 0; i < 3; i++){
+            libraryHoldsHundred.addBook(horror);
+        }
+        for(int i = 0; i < 1; i++){
+            libraryHoldsHundred.addBook(fantasy);
+        }
+
+        assertEquals(5, libraryHoldsHundred.genreCount("Science Fiction"));
+
+
     }
 
 }

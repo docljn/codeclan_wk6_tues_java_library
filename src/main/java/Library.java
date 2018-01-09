@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
 
@@ -30,5 +31,24 @@ public class Library {
             this.books.remove(book);
             borrower.checkout(book);
         }
+    }
+
+    public HashMap<String, Integer> stockPerGenre() {
+        HashMap<String, Integer> stockCount = new HashMap<>();
+        for(int i = 0; i < this.countBooks(); i++) {
+            Book book = this.books.get(i);
+            String bookGenre = book.getGenre();
+            if (stockCount.containsKey(bookGenre)){
+                stockCount.replace(bookGenre, stockCount.get(bookGenre)+1);
+            } else {
+                stockCount.put(bookGenre, 1);
+            }
+
+        }
+        return stockCount;
+    }
+
+    public int genreCount(String genre) {
+        return this.stockPerGenre().get(genre);
     }
 }

@@ -47,6 +47,8 @@ public class Library {
         return stockCount;
     }
 
+//    consider refactoring using .getOrDefault(key, default value) instead of if loop
+
     public int genreCount(String genre) {
         return this.stockPerGenre().get(genre);
     }

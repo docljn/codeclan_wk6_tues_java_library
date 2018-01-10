@@ -27,7 +27,7 @@ public class Library {
     }
 
     public void issueBook(Borrower borrower, Book book) {
-        if(borrower.canBorrowMore()) {
+        if(borrower.canBorrowMore() && this.books.contains(book)) {
             this.books.remove(book);
             borrower.checkout(book);
         }
@@ -43,7 +43,6 @@ public class Library {
             } else {
                 stockCount.put(bookGenre, 1);
             }
-
         }
         return stockCount;
     }

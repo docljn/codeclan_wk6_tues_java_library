@@ -22,6 +22,8 @@ public class Borrower {
     }
 
     public void checkout(Book book) {
-        this.checkedout.add(book);
+        if (this.canBorrowMore()) {
+            this.checkedout.add(book);
+        }
     }
 }
